@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ClusterClient": {
+      "commandName": "Project",
+      "commandLineArgs": "-f ServerAddresses.txt"
+    }
+  }
+}

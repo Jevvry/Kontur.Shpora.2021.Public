@@ -6,7 +6,7 @@ namespace ClusterClient.Clients
 {
     public class RandomClusterClient : ClusterClientBase
     {
-        private readonly Random random = new Random();
+        private readonly Random random = new();
 
         public RandomClusterClient(string[] replicaAddresses)
             : base(replicaAddresses)

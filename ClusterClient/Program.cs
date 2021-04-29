@@ -27,6 +27,11 @@ namespace ClusterClient
                 var clients = new ClusterClientBase[]
                               {
                                   new RandomClusterClient(replicaAddresses),
+                                  new ParallelClusterClient(replicaAddresses),
+                                  new RoundRobinClusterClient(replicaAddresses),
+                                  new SmartClusterClient(replicaAddresses),
+                                  new SmartClusterClientWithStat(replicaAddresses),
+                                  new RoundRobinClusterClientWithStat(replicaAddresses)
                               };
 
                 var queries = new[]
@@ -67,7 +72,7 @@ namespace ClusterClient
         private static bool TryGetReplicaAddresses(string[] args, out string[] replicaAddresses)
         {
             var argumentsParser = new FluentCommandLineParser();
-            string[] result = {};
+            string[] result = { };
 
             argumentsParser.Setup<string>(CaseType.CaseInsensitive, "f", "file")
                 .WithDescription("Path to the file with replica addresses")
